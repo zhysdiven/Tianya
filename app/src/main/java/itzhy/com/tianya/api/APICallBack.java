@@ -1,5 +1,6 @@
 package itzhy.com.tianya.api;
 
+import itzhy.com.tianya.utils.LogUtils;
 import rx.Subscriber;
 
 /**
@@ -15,13 +16,13 @@ public abstract class APICallBack<T> extends Subscriber<T> {
 
     @Override
     public void onError(Throwable e) {
-
+        e.printStackTrace();
     }
 
     @Override
     public void onNext(T t) {
         //请求回调统一处理,
-
+        LogUtils.i(t.toString());
         onNetCallBack(t);
     }
 

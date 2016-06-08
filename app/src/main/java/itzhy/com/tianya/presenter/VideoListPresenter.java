@@ -1,13 +1,9 @@
 package itzhy.com.tianya.presenter;
 
-import itzhy.com.tianya.comm.IBaseView;
+import itzhy.com.tianya.api.APICallBack;
 import itzhy.com.tianya.contract.VideoContract;
-import itzhy.com.tianya.entity.VideoOnline;
+import itzhy.com.tianya.entity.TVItemBean;
 import itzhy.com.tianya.model.VideoModel;
-import rx.Observable;
-import rx.Subscriber;
-
-import java.util.List;
 
 /**
  * Created by Zhy on 2016/5/23
@@ -21,14 +17,25 @@ public class VideoListPresenter implements VideoContract.presenter {
         model = new VideoModel();
     }
 
-    @Override
-    public void getVideoOnlineList(IBaseView view) {
-        Observable.create(new Observable.OnSubscribe<List<VideoOnline>>() {
-            @Override
-            public void call(Subscriber<? super List<VideoOnline>> subscriber) {
 
+    /**
+     * 获取TV频道组
+     */
+    @Override
+    public void getTvBeans(VideoContract.view view, String key, String action) {
+        model.getTVbeans(getTvBeansCallback(view), key, action);
+    }
+
+    /**
+     * 获取TV频道组的回调
+     */
+    private APICallBack getTvBeansCallback(final VideoContract.view view) {
+        return new APICallBack<TVItemBean>() {
+            @Override
+            public void onNetCallBack(TVItemBean beans) {
+                if (beans != null) view.onTvBeansSuccess(beans);
             }
-        });
+        };
     }
 
 

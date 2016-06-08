@@ -32,6 +32,16 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return titles.get(position);
+        switch (position) {
+            case 0:
+                return "媒体";
+            case 1:
+                return "干货";
+            case 2:
+                return "娱乐";
+            case 3:
+                return "应用";
+            default:return "媒体";
+        }
     }
 }

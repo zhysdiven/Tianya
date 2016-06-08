@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import itzhy.com.tianya.R;
 import itzhy.com.tianya.adapter.BaseRecycleAdapter;
 import itzhy.com.tianya.adapter.GHuoItemAdapter;
@@ -30,7 +29,6 @@ import java.util.List;
  */
 public class GHuoFragment extends Fragment {
 
-    @InjectView(R.id.ghuo_recycle_list)
     RecyclerView ghuoRecycleList;
 
     private List<GhuoItem> datas = new ArrayList<GhuoItem>();

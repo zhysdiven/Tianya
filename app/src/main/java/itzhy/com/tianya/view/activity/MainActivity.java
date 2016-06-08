@@ -1,5 +1,6 @@
 package itzhy.com.tianya.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
 import itzhy.com.tianya.R;
 import itzhy.com.tianya.adapter.PageAdapter;
 
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
         setContentView(R.layout.activity_main);
         init();
     }
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("天涯");
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,13 +64,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabs.addTab(tabs.newTab().setText("应用"));
 
         ArrayList<String> title = new ArrayList<>();
-        title.add("媒体");
-        title.add("干货");
-        title.add("娱乐");
-        title.add("应用");
+        title.add("main");
+        title.add("ghuo");
+        title.add("play");
+        title.add("app");
         pageAdapter = new PageAdapter(getSupportFragmentManager(), title);
         vpager.setAdapter(pageAdapter);
         tabs.setupWithViewPager(vpager);
+
+       // initWeather();
+    }
+
+    /**
+     * TODO init weather
+     */
+    private void initWeather() {
+        SimpleDraweeView header = (SimpleDraweeView) findViewById(R.id.img_header);
+        SimpleDraweeView weath = (SimpleDraweeView) findViewById(R.id.img_weather);
     }
 
     @Override
@@ -103,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_gallery) {
             drawer.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_slideshow) {
+            startActivity(new Intent(this, VlcVideoActivity.class));
             drawer.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_manage) {
             drawer.closeDrawer(GravityCompat.START);

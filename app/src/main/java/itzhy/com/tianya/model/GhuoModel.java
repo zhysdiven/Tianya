@@ -16,5 +16,4 @@ public class GhuoModel {
         RetrofitManage.createGhuo(GhuoModleAPI.class).getGhuoTypeListdata(type, count, page).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(callback);
     }
 
-
 }

@@ -48,7 +48,7 @@ public class ToastUtils {
         if (mInstance == null) {
             synchronized (ToastUtils.class) {
                 if (mInstance == null) {
-                    mInstance = new ToastUtils(MainApplication.app);
+                    mInstance = new ToastUtils(MainApplication.getApp());
                     return mInstance;
                 }
             }
@@ -78,7 +78,7 @@ public class ToastUtils {
      * @param msgRes 显示的文本id
      */
     public synchronized void showMessage(int msgRes) {
-        String msg = MainApplication.app.getString(msgRes);
+        String msg = MainApplication.getApp().getString(msgRes);
         if (TextUtils.isEmpty(msg)) {
             return;
         }

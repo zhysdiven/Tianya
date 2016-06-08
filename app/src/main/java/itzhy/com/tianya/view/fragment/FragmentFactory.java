@@ -25,15 +25,15 @@ public class FragmentFactory {
                     return mainFragment;
                 case "app":
                     AppFragment appFragment = AppFragment.newInstance();
-                    titles.put("main", appFragment);
+                    titles.put("app", appFragment);
                     return appFragment;
                 case "play":
                     PlayFragment playFragment = PlayFragment.newInstance();
-                    titles.put("main", playFragment);
+                    titles.put("play", playFragment);
                     return playFragment;
                 case "ghuo":
                     GHuoFragment gHuoFragment = GHuoFragment.newInstance();
-                    titles.put("main", gHuoFragment);
+                    titles.put("ghuo", gHuoFragment);
                     return gHuoFragment;
                 default:
                     return null;

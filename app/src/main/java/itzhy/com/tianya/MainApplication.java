@@ -10,7 +10,7 @@ import itzhy.com.tianya.net.RetrofitManage;
  */
 public class MainApplication extends Application {
 
-    public static Context app;
+    private static Context app;
 
     @Override
     public void onCreate() {
@@ -21,5 +21,9 @@ public class MainApplication extends Application {
     private void init() {
         app = this;
         RetrofitManage.initGhuo();
+    }
+
+    public static Context getApp() {
+        return app;
     }
 }

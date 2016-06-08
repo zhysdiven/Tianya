@@ -12,17 +12,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitManage {
 
     private static Retrofit ghuoRetrofit;
+    private static Retrofit videoRetrofit;
 
     static {
     }
 
     public static void initGhuo() {
         ghuoRetrofit = new Retrofit.Builder().client(new OkHttpClient()).baseUrl(AppConfig.BASE_URL_GHUO).addCallAdapterFactory(RxJavaCallAdapterFactory.create()).addConverterFactory(GsonConverterFactory.create()).build();
+        videoRetrofit = new Retrofit.Builder().client(new OkHttpClient()).baseUrl(AppConfig.BASE_URL_VIDEO_ONLINE).addCallAdapterFactory(RxJavaCallAdapterFactory.create()).addConverterFactory(GsonConverterFactory.create()).build();
     }
+
 
     public static <T> T createGhuo(Class<T> clazz) {
         return ghuoRetrofit.create(clazz);
     }
 
+    public static <T> T createVideo(Class<T> clazz) {
+        return videoRetrofit.create(clazz);
+    }
 
 }

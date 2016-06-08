@@ -14,9 +14,9 @@
     <com.facebook.drawee.view.SimpleDraweeView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            fresco:failureImage="@mipmap/ic_launcher"
+            fresco:placeholderImage="@mipmap/ic_launcher"
             android:layout_alignParentTop="true"
-            fresco:failureImageScaleType="center"
+            fresco:placeholderImageScaleType="center"
             fresco:roundAsCircle="true"
             fresco:roundedCornerRadius="10dp"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
@@ -41,6 +41,7 @@
             android:id="@+id/textView"/>
 
     <RelativeLayout
+            android:id="@+id/rllayout_weather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/img_header"
@@ -50,8 +51,8 @@
         <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                fresco:failureImage="@mipmap/ic_launcher"
-                fresco:failureImageScaleType="center"
+                fresco:placeholderImage="@mipmap/ic_launcher"
+                fresco:placeholderImageScaleType="center"
                 fresco:roundAsCircle="true"
                 fresco:roundedCornerRadius="10dp"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
@@ -62,10 +63,24 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="android.studio@android.com"
+                android:text="android.studio"
+                android:layout_toRightOf="@id/img_weather"
+                android:layout_alignTop="@id/img_weather"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_below="@id/txt_name"
                 android:id="@+id/txt_weather_title"/>
+
+
+        <TextView
+                android:id="@+id/txt_weather_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="android.studio"
+                android:layout_toRightOf="@id/img_weather"
+                android:layout_below="@id/txt_weather_title"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                />
 
     </RelativeLayout>
 
