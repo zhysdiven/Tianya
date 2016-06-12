@@ -14,8 +14,8 @@
         <activity
                 android:name=".view.activity.MainActivity"
                 android:label="@string/title_activity_main"
-                android:theme="@style/AppTheme.NoActionBar"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -29,6 +29,8 @@
         <activity
                 android:name=".view.activity.VlcVideoActivity"
                 android:screenOrientation="landscape">
+        </activity>
+        <activity android:name=".view.activity.TVListActivity">
         </activity>
     </application>
 

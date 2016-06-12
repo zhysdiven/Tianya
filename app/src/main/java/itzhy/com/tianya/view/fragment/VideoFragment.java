@@ -1,5 +1,6 @@
 package itzhy.com.tianya.view.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,14 +11,15 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import itzhy.com.tianya.MainApplication;
 import itzhy.com.tianya.R;
 import itzhy.com.tianya.adapter.BaseRecycleAdapter;
 import itzhy.com.tianya.adapter.TVItemAdapter;
 import itzhy.com.tianya.contract.VideoContract;
 import itzhy.com.tianya.entity.TVBean;
-import itzhy.com.tianya.entity.TVItemBean;
 import itzhy.com.tianya.presenter.VideoListPresenter;
 import itzhy.com.tianya.utils.ItemtouchManage;
+import itzhy.com.tianya.view.activity.TVListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,11 +61,14 @@ public class VideoFragment extends Fragment implements VideoContract.view {
         tvRecycleList.setLayoutManager(new GridLayoutManager(container.getContext(), 2));
         adapter = new TVItemAdapter();
         adapter.addAll(datas);
-        new ItemTouchHelper(new ItemtouchManage<TVBean>(adapter, datas, Color.LTGRAY)).attachToRecyclerView(tvRecycleList);
         tvRecycleList.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseRecycleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                Intent intent = new Intent(getActivity(), TVListActivity.class);
+                intent.putExtra("id", adapter.getItem(position).getCH_ID());
+                intent.putExtra("name",adapter.getItem(position).getCH_NAME());
+                startActivity(intent);
             }
         });
         loadData();
@@ -71,7 +76,7 @@ public class VideoFragment extends Fragment implements VideoContract.view {
     }
 
     private void loadData() {
-        presenter.getTvBeans(this, "8540928", "1");
+        presenter.getTvBeans(this, MainApplication.getKey(), "1");
     }
 
     @Override
@@ -80,9 +85,12 @@ public class VideoFragment extends Fragment implements VideoContract.view {
     }
 
     @Override
-    public void onTvBeansSuccess(TVItemBean datas) {
+    public void onTvBeansSuccess(List<TVBean> datas) {
         refresh.setRefreshing(false);
-        adapter.addAll(datas.getBeen());
+        adapter.clear();
+        this.datas = datas;
+        adapter.addAll(datas);
+        new ItemTouchHelper(new ItemtouchManage<TVBean>(adapter, datas, Color.LTGRAY)).attachToRecyclerView(tvRecycleList);
     }
 
 

@@ -11,6 +11,7 @@ import itzhy.com.tianya.net.RetrofitManage;
 public class MainApplication extends Application {
 
     private static Context app;
+    private static String key = "8540928";
 
     @Override
     public void onCreate() {
@@ -25,5 +26,13 @@ public class MainApplication extends Application {
 
     public static Context getApp() {
         return app;
+    }
+
+    public static String getKey() {
+        return key;
+    }
+
+    public static void setKey(String keys) {
+        key = keys;
     }
 }

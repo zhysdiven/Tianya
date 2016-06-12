@@ -2,7 +2,7 @@ package itzhy.com.tianya.contract;
 
 import itzhy.com.tianya.comm.IBasePresenter;
 import itzhy.com.tianya.comm.IBaseView;
-import itzhy.com.tianya.entity.TVBean;
+import itzhy.com.tianya.entity.TVChildBean;
 
 import java.util.List;
 
@@ -10,14 +10,14 @@ import java.util.List;
  * Created by Zhy on 2016/5/23
  * des:
  */
-public interface VideoContract {
+public interface TVChildContract {
 
     interface view extends IBaseView {
-        void onTvBeansSuccess(List<TVBean> datas);
+        void onTvBeansSuccess(List<TVChildBean> datas);
     }
 
     interface presenter extends IBasePresenter {
-        void getTvBeans(view view, String key, String action);
+        void getTvChildBeans(view view, String key, String action, String id);
     }
 
 }

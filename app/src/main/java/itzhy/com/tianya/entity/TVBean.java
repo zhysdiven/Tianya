@@ -54,6 +54,17 @@ public class TVBean implements Parcelable {
     }
 
     @Override
+    public String toString() {
+        return "TVBean{" +
+                "CH_ID='" + CH_ID + '\'' +
+                ", CH_NAME='" + CH_NAME + '\'' +
+                ", CH_TYPE='" + CH_TYPE + '\'' +
+                ", CH_HIDE='" + CH_HIDE + '\'' +
+                '}';
+    }
+
+
+    @Override
     public int describeContents() {
         return 0;
     }
@@ -73,7 +84,7 @@ public class TVBean implements Parcelable {
         this.CH_HIDE = in.readString();
     }
 
-    public static final Parcelable.Creator<TVBean> CREATOR = new Parcelable.Creator<TVBean>() {
+    public static final Creator<TVBean> CREATOR = new Creator<TVBean>() {
         @Override
         public TVBean createFromParcel(Parcel source) {
             return new TVBean(source);
@@ -84,14 +95,4 @@ public class TVBean implements Parcelable {
             return new TVBean[size];
         }
     };
-
-    @Override
-    public String toString() {
-        return "TVBean{" +
-                "CH_ID='" + CH_ID + '\'' +
-                ", CH_NAME='" + CH_NAME + '\'' +
-                ", CH_TYPE='" + CH_TYPE + '\'' +
-                ", CH_HIDE='" + CH_HIDE + '\'' +
-                '}';
-    }
 }

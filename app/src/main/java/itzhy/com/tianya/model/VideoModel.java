@@ -1,6 +1,5 @@
 package itzhy.com.tianya.model;
 
-import com.google.gson.Gson;
 import itzhy.com.tianya.api.APICallBack;
 import itzhy.com.tianya.api.TvOnlineModleAPI;
 import itzhy.com.tianya.net.RetrofitManage;
@@ -8,22 +7,28 @@ import itzhy.com.tianya.utils.LogUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by Zhy on 2016/5/23
  * des:
  */
 public class VideoModel {
 
+    /**
+     * 获取所有频道组
+     */
     public void getTVbeans(APICallBack callBack, String key, String action) {
-        Map<String, String> requestParams = new HashMap<String, String>();
-        requestParams.put("key", key);
-        requestParams.put("action", action);
-        LogUtils.d(new Gson().toJson(requestParams));
+        LogUtils.d(key + "," + action);
 
         RetrofitManage.createVideo(TvOnlineModleAPI.class).getTVBeans(key, action).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(callBack);
+    }
+
+    /**
+     * 获取对应的子频道
+     */
+    public void getTVChildbeans(APICallBack callBack, String key, String action, String id) {
+        LogUtils.d(key + "," + action + "," + id);
+
+        RetrofitManage.createVideo(TvOnlineModleAPI.class).getTVChildBeans(key, action, id).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(callBack);
     }
 
 }

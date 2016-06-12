@@ -19,7 +19,7 @@ public class RetrofitManage {
 
     public static void initGhuo() {
         ghuoRetrofit = new Retrofit.Builder().client(new OkHttpClient()).baseUrl(AppConfig.BASE_URL_GHUO).addCallAdapterFactory(RxJavaCallAdapterFactory.create()).addConverterFactory(GsonConverterFactory.create()).build();
-        videoRetrofit = new Retrofit.Builder().client(new OkHttpClient()).baseUrl(AppConfig.BASE_URL_VIDEO_ONLINE).addCallAdapterFactory(RxJavaCallAdapterFactory.create()).addConverterFactory(GsonConverterFactory.create()).build();
+        videoRetrofit = new Retrofit.Builder().client(new OkHttpClient()).baseUrl(AppConfig.BASE_URL_VIDEO_ONLINE).addCallAdapterFactory(RxJavaCallAdapterFactory.create()).addConverterFactory(BodyConverterFactory.create()).build();
     }
 
 

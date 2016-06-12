@@ -19,10 +19,11 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import itzhy.com.tianya.R;
 import itzhy.com.tianya.adapter.PageAdapter;
+import itzhy.com.tianya.presenter.VideoListPresenter;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private PageAdapter pageAdapter;
 
@@ -34,11 +35,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         init();
     }
 
+    VideoListPresenter presenters;
+
     private void init() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("天涯");
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         vpager.setAdapter(pageAdapter);
         tabs.setupWithViewPager(vpager);
 
-       // initWeather();
+        // initWeather();
     }
 
     /**
@@ -129,4 +131,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         return true;
     }
+
 }
