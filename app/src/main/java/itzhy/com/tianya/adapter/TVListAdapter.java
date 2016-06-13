@@ -11,7 +11,8 @@ import itzhy.com.tianya.R;
 import itzhy.com.tianya.entity.TVChildBean;
 
 /**
- * Created by YB-PC-1462A on 2016/6/12.
+ * Created by Zhy on 2016/6/12.
+ * des:
  */
 public class TVListAdapter extends BaseRecycleAdapter<TVChildBean, TVListAdapter.ViewHolder> {
 

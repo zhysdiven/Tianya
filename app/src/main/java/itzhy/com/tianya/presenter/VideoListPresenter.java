@@ -2,18 +2,20 @@ package itzhy.com.tianya.presenter;
 
 import itzhy.com.tianya.api.APICallBack;
 import itzhy.com.tianya.contract.TVChildContract;
+import itzhy.com.tianya.contract.TVInfoContract;
 import itzhy.com.tianya.contract.VideoContract;
 import itzhy.com.tianya.entity.TVBean;
 import itzhy.com.tianya.entity.TVChildBean;
+import itzhy.com.tianya.entity.TVListBean;
 import itzhy.com.tianya.model.VideoModel;
 
 import java.util.List;
 
 /**
  * Created by Zhy on 2016/5/23
- * des:
+ * des:电视直播台presenter
  */
-public class VideoListPresenter implements VideoContract.presenter, TVChildContract.presenter {
+public class VideoListPresenter implements VideoContract.presenter, TVChildContract.presenter, TVInfoContract.presenter {
 
     private VideoModel model;
 
@@ -58,4 +60,24 @@ public class VideoListPresenter implements VideoContract.presenter, TVChildContr
             }
         };
     }
+
+
+    /**
+     * 获取对应日期的节目列表
+     */
+    @Override
+    public void getTvListBeans(TVInfoContract.view view, String key, String action, String tvID, String date) {
+        model.getTVListbeans(getTvListBeansCallback(view), key, action, tvID, date);
+    }
+
+    private APICallBack getTvListBeansCallback(final TVInfoContract.view view) {
+        return new APICallBack<List<TVListBean>>() {
+            @Override
+            public void onNetCallBack(List<TVListBean> beans) {
+                if (beans != null) view.onTvListBeansSuccess(beans);
+            }
+        };
+    }
+
+
 }

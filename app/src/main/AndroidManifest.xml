@@ -32,6 +32,8 @@
         </activity>
         <activity android:name=".view.activity.TVListActivity">
         </activity>
+        <activity android:name=".view.activity.TVInfoActivity">
+        </activity>
     </application>
 
 </manifest>

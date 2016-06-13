@@ -31,4 +31,13 @@ public class VideoModel {
         RetrofitManage.createVideo(TvOnlineModleAPI.class).getTVChildBeans(key, action, id).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(callBack);
     }
 
+    /**
+     * 获取对应日期的节目列表
+     */
+    public void getTVListbeans(APICallBack callBack, String key, String action, String id, String date) {
+        LogUtils.d(key + "," + action + "," + id + "," + date);
+
+        RetrofitManage.createVideo(TvOnlineModleAPI.class).getTVListBeans(key, action, id, date).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(callBack);
+    }
+
 }

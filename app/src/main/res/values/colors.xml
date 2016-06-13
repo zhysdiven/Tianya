@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="color_card_borderbg">#eeeeee</color>
+
+    <color name="color_gray_bg">#afafaf</color>
+    <color name="color_transparent">@android:color/transparent</color>
 </resources>

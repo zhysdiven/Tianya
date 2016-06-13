@@ -43,6 +43,7 @@ public class TVListActivity extends AppCompatActivity implements TVChildContract
     public void init() {
         Intent intent = getIntent();
         setTitle(intent.getStringExtra("name"));
+
         id = intent.getStringExtra("id");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -74,7 +75,7 @@ public class TVListActivity extends AppCompatActivity implements TVChildContract
         adapter.setOnItemClickListener(new BaseRecycleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent intent = new Intent(TVListActivity.this, GhuoWebActivity.class);
+                Intent intent = new Intent(TVListActivity.this, TVInfoActivity.class);
                 intent.putExtra("tv_id", adapter.getItem(position).getTV_ID());
                 intent.putExtra("title", adapter.getItem(position).getTV_NAME());
                 startActivity(intent);
@@ -93,18 +94,6 @@ public class TVListActivity extends AppCompatActivity implements TVChildContract
             adapter.addAll(datas);
         }
     }
-
-    /*@Override
-    public void ghuoListResult(boolean error, List<GHuobean.ResultsEntity> datas) {
-        if (error) {
-            Toast.makeText(TVListActivity.this, "获取失败", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        LogUtils.i("ghuo size :" + datas.size());
-        if (datas != null && datas.size() > 0) {
-            adapter.addAll(datas);
-        }
-    }*/
 
 
 }
