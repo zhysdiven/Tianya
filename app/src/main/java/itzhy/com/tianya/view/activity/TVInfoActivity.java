@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import itzhy.com.tianya.R;
@@ -22,14 +23,14 @@ import java.util.List;
 
 public class TVInfoActivity extends AppCompatActivity {
 
-    public String tID;
+    public String tID, tName;
 
     @InjectView(R.id.tab_layout)
     TabLayout tabs;
     @InjectView(R.id.vpage)
     ViewPager pager;
     @InjectView(R.id.fab)
-    FloatingActionButton fbtn;
+    FloatingActionButton fab;
 
     private TabFragmentPagerAdapter adapter;
     private List<Fragment> fragments;
@@ -43,9 +44,10 @@ public class TVInfoActivity extends AppCompatActivity {
     }
 
     private void init() {
-        Intent intent = getIntent();
-        setTitle(intent.getStringExtra("title"));
+        final Intent intent = getIntent();
+        tName = intent.getStringExtra("title");
         tID = intent.getStringExtra("tv_id");
+        setTitle(tName);
 
         fragments = new ArrayList<>();
         String[] titles = {"周日", "周一", "周二", "周三", "周四", "周五", "周六", "周四"};
@@ -71,6 +73,16 @@ public class TVInfoActivity extends AppCompatActivity {
         pager.setCurrentItem(indexOf);
         pager.setOffscreenPageLimit(7);
         tabs.setupWithViewPager(pager);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(TVInfoActivity.this, TVOnlinePlayActivity.class);
+                intent1.putExtra("tv_id", tID);
+                intent1.putExtra("name", tName);
+                startActivity(intent1);
+            }
+        });
     }
 
 }

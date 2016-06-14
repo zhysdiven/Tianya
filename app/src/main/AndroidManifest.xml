@@ -22,17 +22,29 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.GhuoListActivity">
+        <activity
+                android:name=".view.activity.GhuoListActivity"
+                android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".view.activity.GhuoWebActivity">
+        <activity
+                android:name=".view.activity.GhuoWebActivity"
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".view.activity.VlcVideoActivity"
                 android:screenOrientation="landscape">
         </activity>
-        <activity android:name=".view.activity.TVListActivity">
+        <activity
+                android:name=".view.activity.TVListActivity"
+                android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".view.activity.TVInfoActivity">
+        <activity
+                android:name=".view.activity.TVInfoActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".view.activity.TVOnlinePlayActivity"
+                android:screenOrientation="landscape">
         </activity>
     </application>
 

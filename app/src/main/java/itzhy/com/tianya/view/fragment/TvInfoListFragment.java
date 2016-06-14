@@ -79,6 +79,7 @@ public class TvInfoListFragment extends Fragment implements TVInfoContract.view 
 
     @Override
     public void onTvListBeansSuccess(List<TVListBean> datas) {
+        refresh.setRefreshing(false);
         if (datas != null && datas.size() > 0) {
             int t = DateUtils.getCurTime();
             for (int i = 0; i < datas.size(); i++) {
@@ -114,4 +115,5 @@ public class TvInfoListFragment extends Fragment implements TVInfoContract.view 
     public void setTag(boolean tag) {
         this.tag = tag;
     }
+
 }

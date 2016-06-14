@@ -1,9 +1,6 @@
 package itzhy.com.tianya.api;
 
-import itzhy.com.tianya.entity.TVBean;
-import itzhy.com.tianya.entity.TVChildBean;
-import itzhy.com.tianya.entity.TVListBean;
-import itzhy.com.tianya.entity.TVPathCBean;
+import itzhy.com.tianya.entity.*;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -21,6 +18,10 @@ public interface TvOnlineModleAPI {
     @POST("tv/ws.php")
     Observable<List<TVBean>> getTVBeans(@Field("key") String key, @Field("action") String action);
 
+
+    /**
+     * 获取TV子频道
+     */
     @FormUrlEncoded
     @POST("tv/ws.php")
     Observable<List<TVChildBean>> getTVChildBeans(@Field("key") String key, @Field("action") String action, @Field("chid") String childID);
@@ -29,8 +30,20 @@ public interface TvOnlineModleAPI {
     @POST("tv/ws.php")
     Observable<List<TVListBean>> getTVListBeans(@Field("key") String key, @Field("action") String action, @Field("tvid") String tvID, @Field("tvdate") String date);
 
+    /**
+     *
+     */
     @FormUrlEncoded
     @POST("tv/ws.php")
     Observable<List<TVPathCBean>> getTVCountBean(@Field("key") String key, @Field("action") String action, @Field("tvid") String tvID);
+
+
+    /**
+     * 获取当前TV频道线路
+     */
+    @FormUrlEncoded
+    @POST("tv/ws.php")
+    Observable<List<TVPathBean>> getTVPathBean(@Field("key") String key, @Field("action") String action, @Field("tvid") String tvID);
+
 
 }

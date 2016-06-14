@@ -36,8 +36,10 @@ public class TVInfoAdapter extends BaseRecycleAdapter<TVListBean, TVInfoAdapter.
         holder.txtTime.setText(entity.getTV_TIME());
         if (index == position && tag) {
             holder.txtTag.setVisibility(View.VISIBLE);
+            holder.view.setBackgroundResource(R.color.colorPrimary);
         } else {
             holder.txtTag.setVisibility(View.INVISIBLE);
+            holder.view.setBackgroundResource(R.color.color_transparent);
         }
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override

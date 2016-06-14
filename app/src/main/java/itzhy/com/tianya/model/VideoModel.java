@@ -40,4 +40,22 @@ public class VideoModel {
         RetrofitManage.createVideo(TvOnlineModleAPI.class).getTVListBeans(key, action, id, date).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(callBack);
     }
 
+    /**
+     * 获取当前频道数量
+     */
+    public void getTVCountBean(APICallBack callBack, String key, String action, String id, String date) {
+        LogUtils.d(key + "," + action + "," + id + "," + date);
+
+        RetrofitManage.createVideo(TvOnlineModleAPI.class).getTVCountBean(key, action, id).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(callBack);
+    }
+
+    /**
+     * 获取当前频道线路详细数据
+     */
+    public void getTVPathbeans(APICallBack callBack, String key, String action, String id) {
+        LogUtils.d(key + "," + action + "," + id);
+
+        RetrofitManage.createVideo(TvOnlineModleAPI.class).getTVPathBean(key, action, id).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(callBack);
+    }
+
 }
